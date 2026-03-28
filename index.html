@@ -9,7 +9,7 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80">
     <meta property="og:url" content="https://angel-code47.github.io/Adiestramiento-y-paseo-/">
     <meta property="og:type" content="website">
-    <title>Adiestramiento Villanueva</title>
+    <title>Adiestramiento Villanueva en WhatsApp</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
     
@@ -86,4 +86,20 @@
         div.className = 'card';
         div.innerHTML = `
             <div>
-                <img src="${item.imagen
+                <img src="${item.imagen}" alt="Foto de ${item.nombre}">
+                <h3>${item.nombre}</h3>
+                <div class="desc">${item.desc}</div>
+            </div>
+            <div>
+                <p class="price">${item.precio}</p>
+                <button class="btn-video" onclick="window.location.href='videos.html'">
+                    🎥 Ver Videos
+                </button>
+            </div>
+        `;
+        contenedor.appendChild(div);
+    });
+</script>
+
+</body>
+</html>
