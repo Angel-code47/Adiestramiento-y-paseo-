@@ -44,7 +44,8 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             padding: 20px;
-            width: 280px;
+            /* SE AMPLIÓ EL ANCHO DE LAS TARJETAS */
+            width: 320px; 
             text-align: center;
             transition: transform 0.3s ease;
             display: flex;
@@ -69,6 +70,7 @@
             color: #2c3e50;
             margin-top: 0;
             margin-bottom: 10px;
+            font-size: 1.3em;
         }
 
         .price {
@@ -81,8 +83,19 @@
         .desc {
             font-size: 0.95em;
             color: #606770;
-            line-height: 1.4;
+            line-height: 1.5;
             margin-bottom: 20px;
+            text-align: left; 
+        }
+
+        /* ESTILOS NUEVOS PARA LAS LISTAS DENTRO DE LA DESCRIPCIÓN */
+        .desc ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .desc li {
+            margin-bottom: 8px;
         }
 
         /* Botón de WhatsApp */
@@ -171,23 +184,25 @@
     const MI_TELEFONO = "525578022521"; 
 
     // BASE DE DATOS: Lista de tus servicios
+    // NOTA EDUCATIVA: Usamos <ul> para iniciar una lista y <li> para cada punto de la lista. 
+    // Usamos <strong> para hacer el texto negrita.
     const servicios = [
         { 
-            nombre: "Paseos", 
-            precio: "Desde $120 hasta $180", 
-            desc: "Paseo a tu amigo 1 o 2hrs.",
+            nombre: "Paseo Canino: Salud y Equilibrio", 
+            precio: "Desde $120", 
+            desc: "Fomentamos el bienestar físico y emocional de tu compañero a través del movimiento y la convivencia.",
             imagen: "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?auto=format&fit=crop&w=500&q=80"
         },
         { 
-            nombre: "Adiestramiento", 
-            precio: "$3,700", 
-            desc: "Se enseña todo lo básico.",
+            nombre: "Adiestramiento Integral: Comunicación y Control", 
+            precio: "Desde $3,700", 
+            desc: "Transformamos el comportamiento de tu compañero a través de una base sólida de obediencia, garantizando paseos seguros y una convivencia armoniosa. Nuestro programa incluye: <ul><li><strong>Obediencia Básica:</strong> Sentado, echado y quieto.</li><li><strong>Seguridad Vial:</strong> Control de banquetas para prevenir accidentes.</li><li><strong>Conexión Directa:</strong> Acudir al llamado de forma inmediata.</li></ul>",
             imagen: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80"
         },
         { 
-            nombre: "Modificación de conducta", 
-            precio: "$400", 
-            desc: "Se modifica el carácter.",
+            nombre: "Rehabilitación y Modificación de Conducta", 
+            precio: "Desde $400", 
+            desc: "¿Sientes que el comportamiento de tu compañero afecta su calidad de vida? Te ayudamos a comprender el origen de sus miedos y hábitos para recuperar la armonía en casa. Especialistas en: <ul><li><strong>Superación de miedos:</strong> Inseguridad al salir a la calle o ante personas extrañas.</li><li><strong>Ansiedad por separación:</strong> Gestión de conductas destructivas cuando se queda solo.</li><li><strong>Bienestar emocional:</strong> Transformamos el estrés en calma y confianza.</li></ul>",
             imagen: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=500&q=80"
         }
     ];
@@ -202,7 +217,7 @@
             <div>
                 <img src="${item.imagen}" alt="Foto de ${item.nombre}">
                 <h3>${item.nombre}</h3>
-                <p class="desc">${item.desc}</p>
+                <div class="desc">${item.desc}</div>
             </div>
             <div>
                 <p class="price">${item.precio}</p>
@@ -216,7 +231,7 @@
 
     // FUNCIÓN DE ENVÍO: Conecta con la API de WhatsApp
     function enviarMensaje(nombreProducto) {
-        const texto = `¡Hola! Me interesa el servicio de "${nombreProducto}" de Adiestramiento Villanueva. ¿Me podrías dar más información?`;
+        const texto = `¡Hola! Me interesa el servicio "${nombreProducto}" de Adiestramiento Villanueva. ¿Me podrías dar más información?`;
         const mensajeCodificado = encodeURIComponent(texto);
         const url = `https://wa.me/${MI_TELEFONO}?text=${mensajeCodificado}`;
         
